@@ -19,6 +19,7 @@ function App() {
                 id: 123456789,
                 first_name: "Test",
                 last_name: "User",
+                language_code: "en",
               },
               themeParams: {
                 bg_color: "#ffffff",
@@ -27,9 +28,25 @@ function App() {
             },
             ready: () => console.log("Telegram Web App mocked as ready."),
             expand: () => console.log("Telegram Web App mocked expand."),
+            close: () => console.log("Telegram Web App mocked close."),
+            sendData: (data: string) => console.log("Mock sending data:", data),
             themeParams: {
               bg_color: "#ffffff",
               text_color: "#000000",
+            },
+            MainButton: {
+              text: "",
+              color: "#0088cc",
+              textColor: "#ffffff",
+              isVisible: false,
+              isActive: true,
+              setText: (text: string) =>
+                console.log("MainButton setText:", text),
+              onClick: (callback: () => void) => callback(),
+              show: () => console.log("MainButton show"),
+              hide: () => console.log("MainButton hide"),
+              enable: () => console.log("MainButton enable"),
+              disable: () => console.log("MainButton disable"),
             },
           },
         };
