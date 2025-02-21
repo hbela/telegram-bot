@@ -3,6 +3,9 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
 
+// Get the base URL from Vite's environment
+const basePath = import.meta.env.BASE_URL || "/";
+
 i18n
   .use(Backend)
   .use(LanguageDetector)
@@ -15,11 +18,16 @@ i18n
       escapeValue: false,
     },
     backend: {
-      loadPath: "/locales/{{lng}}/translation.json",
+      loadPath: basePath + "locales/{{lng}}/translation.json",
+      addPath: basePath + "locales/{{lng}}/{{ns}}.missing.json",
     },
     detection: {
-      order: ["localStorage", "navigator"],
+      order: ["querystring", "localStorage", "navigator"],
+      lookupQuerystring: "lng",
       caches: ["localStorage"],
+    },
+    react: {
+      useSuspense: false,
     },
   });
 

@@ -28,5 +28,7 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
+    assetsDir: "assets",
+    manifest: true,
   },
 });
